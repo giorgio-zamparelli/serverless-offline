@@ -277,16 +277,16 @@ class Offline {
 
   _registerBabel(isBabelRuntime, babelRuntimeOptions) {
     const options = isBabelRuntime ?
-      babelRuntimeOptions || { presets: ['es2015'] } :
+      babelRuntimeOptions || { presets: ['@babel/preset-es2015'] } :
       this.globalBabelOptions;
 
     if (options) {
       debugLog('Setting babel register:', options);
 
-      // We invoke babel-register only once
+      // We invoke @babel/register only once
       if (!this.babelRegister) {
         debugLog('For the first time');
-        this.babelRegister = require('babel-register')(options);
+        this.babelRegister = require('@babel/register')(options);
       }
     }
   }

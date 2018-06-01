@@ -112,30 +112,30 @@ By default you can send your requests to `http://localhost:3000/`. Please note t
 ## Usage with Babel
 
 You can use Offline with [Serverless-runtime-babel](https://github.com/serverless/serverless-runtime-babel).
-To do so you need to install (at least) the es2015 preset in your project folder (`npm i babel-preset-es2015 --save-dev`).
+To do so you need to install (at least) the es2015 preset in your project folder (`npm i @babel/preset-es2015 --save-dev`).
 
 ~ Or ~
 
-Your λ handlers can be required with `babel-register`.
-To do so, in your `serverless.yml` file, set options to be passed to babel-register like this:
+Your λ handlers can be required with `@babel/register`.
+To do so, in your `serverless.yml` file, set options to be passed to @babel/register like this:
 
 ```yml
 custom:
   serverless-offline:
     babelOptions:
-      presets: ["es2015", "stage-2"]
+      presets: ["@babel/preset-es2015", "@babel/preset-stage-2"]
 ```
 
-Here is the full list of [babel-register options](https://babeljs.io/docs/usage/require/)
+Here is the full list of [@babel/register options](https://babeljs.io/docs/usage/require/)
 
 ## Usage with Flow
 
 If you're using [Flow](https://flow.org/en/) in your service, you'll need to update your `babelOptions` as mentioned [above](#usage-with-babel).
 
-Ensure that `babel-preset-flow` and `transform-flow-strip-types` are installed and properly configured in your project.
+Ensure that `@babel/preset-flow` and `@babel/plugin-transform-flow-strip-types` are installed and properly configured in your project.
 
 ```
-yarn add -D babel-preset-env babel-preset-flow babel-plugin-transform-runtime babel-plugin-transform-flow-strip-types
+yarn add -D @babel/preset-env @babel/preset-flow @babel/plugin-transform-runtime @babel/plugin-transform-flow-strip-types
 ```
 
 Then, in your `.babelrc`:
@@ -143,25 +143,25 @@ Then, in your `.babelrc`:
 ```
 {
   "presets": [
-    "env",
-    "flow"
+    "@babel/preset-env",
+    "@babel/preset-flow"
   ],
   "plugins": [
-    "transform-runtime",
-    "transform-flow-strip-types"
+    "@babel/plugin-transform-runtime",
+    "@babel/plugin-transform-flow-strip-types"
   ]
 }
 ```
 
 See the [docs](https://flow.org/en/docs/install/) for additional details on setting up Flow.
 
-Finally, add the `"flow"` preset to your `babelOptions`:
+Finally, add the `"@babel/preset-flow"` preset to your `babelOptions`:
 
 ```yml
 custom:
   serverless-offline:
     babelOptions:
-      presets: ["env", "flow"]
+      presets: ["@babel/preset-env", "@babel/preset-flow"]
 ```
 
 ## Token Authorizers
